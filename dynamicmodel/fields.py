@@ -38,7 +38,7 @@ from django.forms.util import ValidationError as FormValidationError
 class JSONFormField(Field):
     def clean(self, value):
 
-        if not value and not self.required:
+        if not (value or self.required):
             return None
 
         value = super(JSONFormField, self).clean(value)
